@@ -1,0 +1,49 @@
+version: "2"
+services:
+  proxy:
+    image: nginx:stable-alpine
+    networks:
+      - nred_proxy-net
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./proxy_config:/etc/nginx/conf.d
+      - ./host_privates:/etc/ssl/private:ro
+      - ./host_certs:/etc/ssl/certs:ro
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./portainer-data:/data
+    networks:
+      - nred_proxy-net
+  node-red:
+    container_name: node-red
+    image: nodered/node-red:latest
+    environment:
+      - TZ=Europe/Berlin
+    networks:
+      - nred_proxy-net
+    volumes:
+      - ./nodered-data:/data
+  statping:
+    container_name: statping
+    image: statping/statping
+    restart: always
+    volumes:
+      - ./statping-data:/app
+    environment:
+      DB_CONN: sqlite
+    networks:
+      - nred_proxy-net
+
+networks:
+  nred_proxy-net:
+volumes:
+  nodered-data:
