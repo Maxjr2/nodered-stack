@@ -1,11 +1,7 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base"
-  ]
-{
-  "fileMatch": [
-    "(^|/)(?:docker-)?compose[^/]*\\.ya?ml$"
-  ]
-}
+  "enabledManagers": ["docker-compose"],
+  "dependencyDashboard": true,
+  "ansible": {
+    "fileMatch": ["^group_vars/.*\\.ya?ml$"]
+  }
 }
