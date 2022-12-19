@@ -29,7 +29,7 @@ do
   else
     file_name="$company-$subdomain-selfsigned"
   fi
-  
+  #hi
   # Generate an SSL certificate and key for the domain
   openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout "$file_name.key" -out "$file_name.crt" -subj "/C=$country/ST=$state/O=$company/CN=$domain"
   
