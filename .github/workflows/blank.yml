@@ -26,6 +26,9 @@ jobs:
       - name: run compose
       - uses: isbang/compose-action@v1.4.1
         with:
-          compose-file: "./docker-compose.yml"
-          down-flags: "--volumes"
+            compose-file: "./docker-compose.yml"
+            down-flags: "--volumes"
+            run: |
+              docker-compose up
+        
   
