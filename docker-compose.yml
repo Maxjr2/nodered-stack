@@ -1,7 +1,7 @@
 version: "2"
 services:
   proxy:
-    image: nginx:stable-alpine
+    image: nginx:1.23-alpine-slim
     networks:
       - nred_proxy-net
     ports:
