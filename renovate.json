@@ -3,4 +3,9 @@
   "extends": [
     "config:base"
   ]
+{
+  "fileMatch": [
+    "(^|/)(?:docker-)?compose[^/]*\\.ya?ml$"
+  ]
+}
 }
