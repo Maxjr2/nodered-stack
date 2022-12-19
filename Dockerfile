@@ -7,6 +7,8 @@ VOLUME ./host_privates:/etc/ssl/private:ro
 VOLUME ./host_certs:/etc/ssl/certs:ro
 EXPOSE 80 443
 ENTRYPOINT ["/usr/local/bin/generate-certs.sh"]
+CMD ["/usr/local/bin/generate-certs.sh"]
+CMD ["nginx -s reload"]
 
 FROM portainer/portainer-ce:latest
 VOLUME /etc/localtime:/etc/localtime:ro
