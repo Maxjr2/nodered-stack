@@ -1,0 +1,16 @@
+spec:
+ name: my-nodered-stack
+ services:
+ - name: nodered-stack
+   git:
+     branch: main
+     repo_clone_url: https://github.com/Maxjr2/nodered-stack.git
+     envs:
+    - key: O
+      value: "Random Inc."
+    - key: L
+      value: "Munich"
+    - key: ST
+      value: "BY"
+    - key: C
+      value: "DE"
