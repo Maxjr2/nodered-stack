@@ -1,7 +1,7 @@
 version: "2"
 services:
   proxy:
-    image: nginx:1.23-alpine-slim
+    image: ghcr.io/maxjr2/nrs-nginx:stable
     networks:
       - nred_proxy-net
     ports:
@@ -9,8 +9,8 @@ services:
       - 443:443
     volumes:
       - ./proxy_config:/etc/nginx/conf.d
-      - ./host_privates:/etc/ssl/private:ro
-      - ./host_certs:/etc/ssl/certs:ro
+      - ./host_privates:/etc/ssl/private:rw
+      - ./host_certs:/etc/ssl/certs:rw
   portainer:
     image: portainer/portainer-ce:latest
     container_name: portainer
